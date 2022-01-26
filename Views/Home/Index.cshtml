@@ -1,0 +1,24 @@
+﻿@{ ViewData["Title"] = "Home Page"; }
+
+@if (User.Identity.IsAuthenticated)
+{
+    @if(!User.IsInRole("block"))
+    {
+        <h1>@User.Identity.Name</h1>
+    }
+    else
+    {
+        <h1>Profile blocked</h1>
+    }
+}
+else
+{
+<div class="text-center">
+    <h1 class="display-4">Welcome to the MyCollection web-site!</h1>
+    <p>
+        Now you are in a read-only mode.
+        Please<a asp-action="Register" asp-controller="Account"> register</a>
+        or<a asp-action="Login" asp-controller="Account"> log in</a> to have ful access
+    </p>
+</div>
+}
